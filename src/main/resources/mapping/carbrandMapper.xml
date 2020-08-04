@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.carbrandMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.carbrand" >
+    <id column="cbdid" property="cbdid" jdbcType="INTEGER" />
+    <result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+    <result column="logogram" property="logogram" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cbdid, cbdname, logogram
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from carbrand
+    where cbdid = #{cbdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carbrand
+    where cbdid = #{cbdid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.carbrand" >
+    insert into carbrand (cbdid, cbdname, logogram
+      )
+    values (#{cbdid,jdbcType=INTEGER}, #{cbdname,jdbcType=VARCHAR}, #{logogram,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.carbrand" >
+    insert into carbrand
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cbdid != null" >
+        cbdid,
+      </if>
+      <if test="cbdname != null" >
+        cbdname,
+      </if>
+      <if test="logogram != null" >
+        logogram,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cbdid != null" >
+        #{cbdid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdname != null" >
+        #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="logogram != null" >
+        #{logogram,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.carbrand" >
+    update carbrand
+    <set >
+      <if test="cbdname != null" >
+        cbdname = #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="logogram != null" >
+        logogram = #{logogram,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cbdid = #{cbdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.carbrand" >
+    update carbrand
+    set cbdname = #{cbdname,jdbcType=VARCHAR},
+      logogram = #{logogram,jdbcType=VARCHAR}
+    where cbdid = #{cbdid,jdbcType=INTEGER}
+  </update>
+</mapper>

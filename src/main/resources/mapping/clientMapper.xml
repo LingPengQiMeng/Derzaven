@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.clientMapper">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.client">
+    <id column="clid" jdbcType="INTEGER" property="clid" />
+    <result column="cliname" jdbcType="VARCHAR" property="cliname" />
+    <result column="clisex" jdbcType="INTEGER" property="clisex" />
+    <result column="cliphone" jdbcType="VARCHAR" property="cliphone" />
+    <result column="cliaddress" jdbcType="VARCHAR" property="cliaddress" />
+    <result column="cliborth" jdbcType="DATE" property="cliborth" />
+    <result column="clidcard" jdbcType="VARCHAR" property="clidcard" />
+    <result column="growthval" jdbcType="INTEGER" property="growthval" />
+    <result column="rank" jdbcType="VARCHAR" property="rank" />
+    <result column="discount" jdbcType="DECIMAL" property="discount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    clid, cliname, clisex, cliphone, cliaddress, cliborth, clidcard, growthval, rank, 
+    discount
+  </sql>
+  <!-- 查询 -->
+   <select id="select" resultMap="BaseResultMap" >
+    select 
+    *
+    from client
+  </select>
+  
+   <!-- 根据id查询 -->
+   <select id="selectById" resultMap="BaseResultMap" >
+    select *  from client where clid = #{clid,jdbcType=INTEGER}
+  </select>
+ 
+ 	 <!-- 修改 -->
+  <update id="updateClient" parameterType="com.accp.pojo.client" >
+    update client
+    set
+        cliname = #{cliname,jdbcType=VARCHAR},
+
+        clisex = #{clisex,jdbcType=INTEGER},
+ 
+        cliphone = #{cliphone,jdbcType=VARCHAR},
+
+        cliaddress = #{cliaddress,jdbcType=VARCHAR},
+
+        cliborth = #{cliborth,jdbcType=DATE},
+
+        clidcard = #{clidcard,jdbcType=INTEGER}
+
+   where clid = #{clid,jdbcType=INTEGER}
+  </update>
+ 
+ <!-- 删除 -->
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from client
+    where clid = #{clid,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 新增 -->
+  <insert id="addClient">
+   INSERT INTO `client` (cliname,clisex,cliphone,cliaddress,cliborth,clidcard,growthval,rank,discount) VALUES(
+     #{record.cliname,jdbcType=VARCHAR},
+        #{record.clisex,jdbcType=INTEGER},
+         #{record.cliphone,jdbcType=VARCHAR},
+        #{record.cliaddress,jdbcType=VARCHAR},
+        #{record.cliborth,jdbcType=DATE}, #{record.clidcard,jdbcType=INTEGER},#{record.growthval,jdbcType=INTEGER}, #{record.rank,jdbcType=VARCHAR},#{record.discount}
+  ) 
+  </insert>
+</mapper>

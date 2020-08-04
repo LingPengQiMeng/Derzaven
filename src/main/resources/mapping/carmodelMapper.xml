@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.carmodelMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.carmodel" >
+    <id column="cmlid" property="cmlid" jdbcType="INTEGER" />
+    <result column="cbdid" property="cbdid" jdbcType="INTEGER" />
+    <result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+    <result column="engid" property="engid" jdbcType="INTEGER" />
+    <result column="engname" property="engname" jdbcType="VARCHAR" />
+    <result column="cmlmodel" property="cmlmodel" jdbcType="VARCHAR" />
+    <result column="reference" property="reference" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cmlid, cbdid, cbdname, engid, engname, cmlmodel, reference
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from carmodel
+    where cmlid = #{cmlid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carmodel
+    where cmlid = #{cmlid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.carmodel" >
+    insert into carmodel (cmlid, cbdid, cbdname, 
+      engid, engname, cmlmodel, 
+      reference)
+    values (#{cmlid,jdbcType=INTEGER}, #{cbdid,jdbcType=INTEGER}, #{cbdname,jdbcType=VARCHAR}, 
+      #{engid,jdbcType=INTEGER}, #{engname,jdbcType=VARCHAR}, #{cmlmodel,jdbcType=VARCHAR}, 
+      #{reference,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.carmodel" >
+    insert into carmodel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cmlid != null" >
+        cmlid,
+      </if>
+      <if test="cbdid != null" >
+        cbdid,
+      </if>
+      <if test="cbdname != null" >
+        cbdname,
+      </if>
+      <if test="engid != null" >
+        engid,
+      </if>
+      <if test="engname != null" >
+        engname,
+      </if>
+      <if test="cmlmodel != null" >
+        cmlmodel,
+      </if>
+      <if test="reference != null" >
+        reference,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cmlid != null" >
+        #{cmlid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdid != null" >
+        #{cbdid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdname != null" >
+        #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="engid != null" >
+        #{engid,jdbcType=INTEGER},
+      </if>
+      <if test="engname != null" >
+        #{engname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlmodel != null" >
+        #{cmlmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="reference != null" >
+        #{reference,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.carmodel" >
+    update carmodel
+    <set >
+      <if test="cbdid != null" >
+        cbdid = #{cbdid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdname != null" >
+        cbdname = #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="engid != null" >
+        engid = #{engid,jdbcType=INTEGER},
+      </if>
+      <if test="engname != null" >
+        engname = #{engname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlmodel != null" >
+        cmlmodel = #{cmlmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="reference != null" >
+        reference = #{reference,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where cmlid = #{cmlid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.carmodel" >
+    update carmodel
+    set cbdid = #{cbdid,jdbcType=INTEGER},
+      cbdname = #{cbdname,jdbcType=VARCHAR},
+      engid = #{engid,jdbcType=INTEGER},
+      engname = #{engname,jdbcType=VARCHAR},
+      cmlmodel = #{cmlmodel,jdbcType=VARCHAR},
+      reference = #{reference,jdbcType=DECIMAL}
+    where cmlid = #{cmlid,jdbcType=INTEGER}
+  </update>
+</mapper>

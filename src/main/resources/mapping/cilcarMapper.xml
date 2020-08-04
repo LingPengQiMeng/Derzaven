@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.cilcarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.cilcar" >
+    <id column="clrno" property="clrno" jdbcType="VARCHAR" />
+    <result column="clid" property="clid" jdbcType="INTEGER" />
+    <result column="cliname" property="cliname" jdbcType="VARCHAR" />
+    <result column="cmlid" property="cmlid" jdbcType="INTEGER" />
+    <result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+    <result column="cmlmodel" property="cmlmodel" jdbcType="VARCHAR" />
+    <result column="engid" property="engid" jdbcType="INTEGER" />
+    <result column="engname" property="engname" jdbcType="VARCHAR" />
+    <result column="affiliation" property="affiliation" jdbcType="VARCHAR" />
+    <collection property="car" column="cmlid" select="selectcarmodel"></collection>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    clrno, clid, cliname, cmlid, cbdname, cmlmodel, engid, engname, affiliation
+  </sql>
+  <select id="carlist" resultMap="BaseResultMap">
+  	select * from cilcar
+  </select>
+  <select id="selectcarmodel" resultType="com.accp.pojo.carmodel">
+  		select * from carmodel where cmlid=#{0}
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from cilcar
+    where clrno = #{clrno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cilcar
+    where clrno = #{clrno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.cilcar" >
+    insert into cilcar (clrno, clid, cliname, 
+      cmlid, cbdname, cmlmodel, 
+      engid, engname, affiliation
+      )
+    values (#{clrno,jdbcType=VARCHAR}, #{clid,jdbcType=INTEGER}, #{cliname,jdbcType=VARCHAR}, 
+      #{cmlid,jdbcType=INTEGER}, #{cbdname,jdbcType=VARCHAR}, #{cmlmodel,jdbcType=VARCHAR}, 
+      #{engid,jdbcType=INTEGER}, #{engname,jdbcType=VARCHAR}, #{affiliation,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.cilcar" >
+    insert into cilcar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clrno != null" >
+        clrno,
+      </if>
+      <if test="clid != null" >
+        clid,
+      </if>
+      <if test="cliname != null" >
+        cliname,
+      </if>
+      <if test="cmlid != null" >
+        cmlid,
+      </if>
+      <if test="cbdname != null" >
+        cbdname,
+      </if>
+      <if test="cmlmodel != null" >
+        cmlmodel,
+      </if>
+      <if test="engid != null" >
+        engid,
+      </if>
+      <if test="engname != null" >
+        engname,
+      </if>
+      <if test="affiliation != null" >
+        affiliation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clrno != null" >
+        #{clrno,jdbcType=VARCHAR},
+      </if>
+      <if test="clid != null" >
+        #{clid,jdbcType=INTEGER},
+      </if>
+      <if test="cliname != null" >
+        #{cliname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlid != null" >
+        #{cmlid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdname != null" >
+        #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlmodel != null" >
+        #{cmlmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="engid != null" >
+        #{engid,jdbcType=INTEGER},
+      </if>
+      <if test="engname != null" >
+        #{engname,jdbcType=VARCHAR},
+      </if>
+      <if test="affiliation != null" >
+        #{affiliation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.cilcar" >
+    update cilcar
+    <set >
+      <if test="clid != null" >
+        clid = #{clid,jdbcType=INTEGER},
+      </if>
+      <if test="cliname != null" >
+        cliname = #{cliname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlid != null" >
+        cmlid = #{cmlid,jdbcType=INTEGER},
+      </if>
+      <if test="cbdname != null" >
+        cbdname = #{cbdname,jdbcType=VARCHAR},
+      </if>
+      <if test="cmlmodel != null" >
+        cmlmodel = #{cmlmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="engid != null" >
+        engid = #{engid,jdbcType=INTEGER},
+      </if>
+      <if test="engname != null" >
+        engname = #{engname,jdbcType=VARCHAR},
+      </if>
+      <if test="affiliation != null" >
+        affiliation = #{affiliation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where clrno = #{clrno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.cilcar" >
+    update cilcar
+    set clid = #{clid,jdbcType=INTEGER},
+      cliname = #{cliname,jdbcType=VARCHAR},
+      cmlid = #{cmlid,jdbcType=INTEGER},
+      cbdname = #{cbdname,jdbcType=VARCHAR},
+      cmlmodel = #{cmlmodel,jdbcType=VARCHAR},
+      engid = #{engid,jdbcType=INTEGER},
+      engname = #{engname,jdbcType=VARCHAR},
+      affiliation = #{affiliation,jdbcType=VARCHAR}
+    where clrno = #{clrno,jdbcType=VARCHAR}
+  </update>
+</mapper>
