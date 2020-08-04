@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.EngineMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Engine" >
+    <id column="engid" property="engid" jdbcType="INTEGER" />
+    <result column="engname" property="engname" jdbcType="VARCHAR" />
+    <result column="engbrand" property="engbrand" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    engid, engname, engbrand
+  </sql>
+  <select id="query" resultMap="BaseResultMap">
+  		select * from engine
+  </select>
+  <insert id="add">
+  		insert into engine(engname, engbrand)values(#{eng.engname},#{eng.engbrand})
+  </insert>
+  <update id="update">
+  	 update engine
+    set
+        engname = #{eng.engname},
+        engbrand = #{eng.engbrand}
+    where engid = #{eng.engid}
+  </update>
+  <delete id="delete">
+  		delete from engine where engid=#{id}
+  </delete>
+  <select id="queryId" resultMap="BaseResultMap">
+  		select * from engine where engid=#{id}
+  </select>
+</mapper>
