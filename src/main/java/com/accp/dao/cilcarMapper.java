@@ -2,6 +2,8 @@ package com.accp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.cilcar;
 
 public interface cilcarMapper {
@@ -18,4 +20,6 @@ public interface cilcarMapper {
     int updateByPrimaryKey(cilcar record);
     
     List<cilcar> carlist();
+    
+    List<cilcar> selectByCliname(@Param("cliname") String cliname);
 }

@@ -23,6 +23,11 @@
   		select * from carmodel where cmlid=#{0}
   </select>
   
+  <select id="selectByCliname" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  	SELECT * FROM cilcar WHERE cliname=#{cliname,jdbcType=VARCHAR};
+  </select>
+  
+  
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

@@ -1,5 +1,7 @@
 package com.accp.biz.yzq;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -35,4 +37,9 @@ public class carBiz {
 		public int deleteById(String clrno) {
 			return cilmapper.deleteByPrimaryKey(clrno);
 		 }
+		
+	//根据姓名查询车辆资料
+		public List<cilcar> selectBycliname(String cliname){
+			return cilmapper.selectByCliname(cliname);
+		}
 }

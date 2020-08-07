@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.repairbillMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.repairbill" >
+    <id column="odd" property="odd" jdbcType="VARCHAR" />
+    <result column="clrno" property="clrno" jdbcType="VARCHAR" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="staid" property="staid" jdbcType="VARCHAR" />
+    <result column="staname" property="staname" jdbcType="VARCHAR" />
+    <result column="resno" property="resno" jdbcType="VARCHAR" />
+    <result column="billingtime" property="billingtime" jdbcType="TIMESTAMP" />
+    <result column="maintaintype" property="maintaintype" jdbcType="VARCHAR" />
+    <result column="predictdate" property="predictdate" jdbcType="DATE" />
+    <result column="practicaldate" property="practicaldate" jdbcType="DATE" />
+    <result column="cause" property="cause" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="bcstate" property="bcstate" jdbcType="INTEGER" />
+    <result column="mhcost" property="mhcost" jdbcType="DECIMAL" />
+    <result column="consumehour" property="consumehour" jdbcType="INTEGER" />
+    <result column="rescue" property="rescue" jdbcType="DECIMAL" />
+    <result column="goodsamt" property="goodsamt" jdbcType="DECIMAL" />
+    <result column="projectamt" property="projectamt" jdbcType="DECIMAL" />
+    <result column="oddamt" property="oddamt" jdbcType="DECIMAL" />
+    <result column="caastate" property="caastate" jdbcType="INTEGER" />
+    <result column="caatype" property="caatype" jdbcType="VARCHAR" />
+    <result column="caamoney" property="caamoney" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    odd, clrno, classid, classname, staid, staname, resno, billingtime, maintaintype, 
+    predictdate, practicaldate, cause, remark, bcstate, mhcost, consumehour, rescue, 
+    goodsamt, projectamt, oddamt, caastate, caatype, caamoney
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from repairbill
+    where odd = #{odd,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from repairbill
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from repairbill
+    where odd = #{odd,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.repairbill" >
+    insert into repairbill (odd, clrno, classid, 
+      classname, staid, staname, 
+      resno, billingtime, maintaintype, 
+      predictdate, practicaldate, cause, 
+      remark, bcstate, mhcost, 
+      consumehour, rescue, goodsamt, 
+      projectamt, oddamt, caastate, 
+      caatype, caamoney)
+    values (#{odd,jdbcType=VARCHAR}, #{clrno,jdbcType=VARCHAR}, #{classid,jdbcType=INTEGER}, 
+      #{classname,jdbcType=VARCHAR}, #{staid,jdbcType=VARCHAR}, #{staname,jdbcType=VARCHAR}, 
+      #{resno,jdbcType=VARCHAR}, #{billingtime,jdbcType=TIMESTAMP}, #{maintaintype,jdbcType=VARCHAR}, 
+      #{predictdate,jdbcType=DATE}, #{practicaldate,jdbcType=DATE}, #{cause,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{bcstate,jdbcType=INTEGER}, #{mhcost,jdbcType=DECIMAL}, 
+      #{consumehour,jdbcType=INTEGER}, #{rescue,jdbcType=DECIMAL}, #{goodsamt,jdbcType=DECIMAL}, 
+      #{projectamt,jdbcType=DECIMAL}, #{oddamt,jdbcType=DECIMAL}, #{caastate,jdbcType=INTEGER}, 
+      #{caatype,jdbcType=VARCHAR}, #{caamoney,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.repairbill" >
+    insert into repairbill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="odd != null" >
+        odd,
+      </if>
+      <if test="clrno != null" >
+        clrno,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="staid != null" >
+        staid,
+      </if>
+      <if test="staname != null" >
+        staname,
+      </if>
+      <if test="resno != null" >
+        resno,
+      </if>
+      <if test="billingtime != null" >
+        billingtime,
+      </if>
+      <if test="maintaintype != null" >
+        maintaintype,
+      </if>
+      <if test="predictdate != null" >
+        predictdate,
+      </if>
+      <if test="practicaldate != null" >
+        practicaldate,
+      </if>
+      <if test="cause != null" >
+        cause,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="bcstate != null" >
+        bcstate,
+      </if>
+      <if test="mhcost != null" >
+        mhcost,
+      </if>
+      <if test="consumehour != null" >
+        consumehour,
+      </if>
+      <if test="rescue != null" >
+        rescue,
+      </if>
+      <if test="goodsamt != null" >
+        goodsamt,
+      </if>
+      <if test="projectamt != null" >
+        projectamt,
+      </if>
+      <if test="oddamt != null" >
+        oddamt,
+      </if>
+      <if test="caastate != null" >
+        caastate,
+      </if>
+      <if test="caatype != null" >
+        caatype,
+      </if>
+      <if test="caamoney != null" >
+        caamoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="odd != null" >
+        #{odd,jdbcType=VARCHAR},
+      </if>
+      <if test="clrno != null" >
+        #{clrno,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="staid != null" >
+        #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="staname != null" >
+        #{staname,jdbcType=VARCHAR},
+      </if>
+      <if test="resno != null" >
+        #{resno,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null" >
+        #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintaintype != null" >
+        #{maintaintype,jdbcType=VARCHAR},
+      </if>
+      <if test="predictdate != null" >
+        #{predictdate,jdbcType=DATE},
+      </if>
+      <if test="practicaldate != null" >
+        #{practicaldate,jdbcType=DATE},
+      </if>
+      <if test="cause != null" >
+        #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bcstate != null" >
+        #{bcstate,jdbcType=INTEGER},
+      </if>
+      <if test="mhcost != null" >
+        #{mhcost,jdbcType=DECIMAL},
+      </if>
+      <if test="consumehour != null" >
+        #{consumehour,jdbcType=INTEGER},
+      </if>
+      <if test="rescue != null" >
+        #{rescue,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsamt != null" >
+        #{goodsamt,jdbcType=DECIMAL},
+      </if>
+      <if test="projectamt != null" >
+        #{projectamt,jdbcType=DECIMAL},
+      </if>
+      <if test="oddamt != null" >
+        #{oddamt,jdbcType=DECIMAL},
+      </if>
+      <if test="caastate != null" >
+        #{caastate,jdbcType=INTEGER},
+      </if>
+      <if test="caatype != null" >
+        #{caatype,jdbcType=VARCHAR},
+      </if>
+      <if test="caamoney != null" >
+        #{caamoney,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.repairbill" >
+    update repairbill
+    <set >
+      <if test="clrno != null" >
+        clrno = #{clrno,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="staid != null" >
+        staid = #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="staname != null" >
+        staname = #{staname,jdbcType=VARCHAR},
+      </if>
+      <if test="resno != null" >
+        resno = #{resno,jdbcType=VARCHAR},
+      </if>
+      <if test="billingtime != null" >
+        billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maintaintype != null" >
+        maintaintype = #{maintaintype,jdbcType=VARCHAR},
+      </if>
+      <if test="predictdate != null" >
+        predictdate = #{predictdate,jdbcType=DATE},
+      </if>
+      <if test="practicaldate != null" >
+        practicaldate = #{practicaldate,jdbcType=DATE},
+      </if>
+      <if test="cause != null" >
+        cause = #{cause,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="bcstate != null" >
+        bcstate = #{bcstate,jdbcType=INTEGER},
+      </if>
+      <if test="mhcost != null" >
+        mhcost = #{mhcost,jdbcType=DECIMAL},
+      </if>
+      <if test="consumehour != null" >
+        consumehour = #{consumehour,jdbcType=INTEGER},
+      </if>
+      <if test="rescue != null" >
+        rescue = #{rescue,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsamt != null" >
+        goodsamt = #{goodsamt,jdbcType=DECIMAL},
+      </if>
+      <if test="projectamt != null" >
+        projectamt = #{projectamt,jdbcType=DECIMAL},
+      </if>
+      <if test="oddamt != null" >
+        oddamt = #{oddamt,jdbcType=DECIMAL},
+      </if>
+      <if test="caastate != null" >
+        caastate = #{caastate,jdbcType=INTEGER},
+      </if>
+      <if test="caatype != null" >
+        caatype = #{caatype,jdbcType=VARCHAR},
+      </if>
+      <if test="caamoney != null" >
+        caamoney = #{caamoney,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where odd = #{odd,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.repairbill" >
+    update repairbill
+    set clrno = #{clrno,jdbcType=VARCHAR},
+      classid = #{classid,jdbcType=INTEGER},
+      classname = #{classname,jdbcType=VARCHAR},
+      staid = #{staid,jdbcType=VARCHAR},
+      staname = #{staname,jdbcType=VARCHAR},
+      resno = #{resno,jdbcType=VARCHAR},
+      billingtime = #{billingtime,jdbcType=TIMESTAMP},
+      maintaintype = #{maintaintype,jdbcType=VARCHAR},
+      predictdate = #{predictdate,jdbcType=DATE},
+      practicaldate = #{practicaldate,jdbcType=DATE},
+      cause = #{cause,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      bcstate = #{bcstate,jdbcType=INTEGER},
+      mhcost = #{mhcost,jdbcType=DECIMAL},
+      consumehour = #{consumehour,jdbcType=INTEGER},
+      rescue = #{rescue,jdbcType=DECIMAL},
+      goodsamt = #{goodsamt,jdbcType=DECIMAL},
+      projectamt = #{projectamt,jdbcType=DECIMAL},
+      oddamt = #{oddamt,jdbcType=DECIMAL},
+      caastate = #{caastate,jdbcType=INTEGER},
+      caatype = #{caatype,jdbcType=VARCHAR},
+      caamoney = #{caamoney,jdbcType=DECIMAL}
+    where odd = #{odd,jdbcType=VARCHAR}
+  </update>
+</mapper>

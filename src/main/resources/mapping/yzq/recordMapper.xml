@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.recordMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.record" >
+    <id column="recid" property="recid" jdbcType="INTEGER" />
+    <result column="odd" property="odd" jdbcType="VARCHAR" />
+    <result column="rewid" property="rewid" jdbcType="INTEGER" />
+    <result column="goodsid" property="goodsid" jdbcType="INTEGER" />
+    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
+    <result column="goodsprice" property="goodsprice" jdbcType="DECIMAL" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="goodsamt" property="goodsamt" jdbcType="DECIMAL" />
+    <result column="proid" property="proid" jdbcType="INTEGER" />
+    <result column="proname" property="proname" jdbcType="VARCHAR" />
+    <result column="proprice" property="proprice" jdbcType="DECIMAL" />
+    <result column="rectype" property="rectype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recid, odd, rewid, goodsid, goodsname, goodsprice, num, goodsamt, proid, proname, 
+    proprice, rectype
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from record
+    where recid = #{recid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from record
+    where recid = #{recid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.record" >
+    insert into record (recid, odd, rewid, 
+      goodsid, goodsname, goodsprice, 
+      num, goodsamt, proid, 
+      proname, proprice, rectype
+      )
+    values (#{recid,jdbcType=INTEGER}, #{odd,jdbcType=VARCHAR}, #{rewid,jdbcType=INTEGER}, 
+      #{goodsid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{goodsprice,jdbcType=DECIMAL}, 
+      #{num,jdbcType=INTEGER}, #{goodsamt,jdbcType=DECIMAL}, #{proid,jdbcType=INTEGER}, 
+      #{proname,jdbcType=VARCHAR}, #{proprice,jdbcType=DECIMAL}, #{rectype,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.record" >
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recid != null" >
+        recid,
+      </if>
+      <if test="odd != null" >
+        odd,
+      </if>
+      <if test="rewid != null" >
+        rewid,
+      </if>
+      <if test="goodsid != null" >
+        goodsid,
+      </if>
+      <if test="goodsname != null" >
+        goodsname,
+      </if>
+      <if test="goodsprice != null" >
+        goodsprice,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="goodsamt != null" >
+        goodsamt,
+      </if>
+      <if test="proid != null" >
+        proid,
+      </if>
+      <if test="proname != null" >
+        proname,
+      </if>
+      <if test="proprice != null" >
+        proprice,
+      </if>
+      <if test="rectype != null" >
+        rectype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recid != null" >
+        #{recid,jdbcType=INTEGER},
+      </if>
+      <if test="odd != null" >
+        #{odd,jdbcType=VARCHAR},
+      </if>
+      <if test="rewid != null" >
+        #{rewid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        #{goodsprice,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="goodsamt != null" >
+        #{goodsamt,jdbcType=DECIMAL},
+      </if>
+      <if test="proid != null" >
+        #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null" >
+        #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="proprice != null" >
+        #{proprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rectype != null" >
+        #{rectype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.record" >
+    update record
+    <set >
+      <if test="odd != null" >
+        odd = #{odd,jdbcType=VARCHAR},
+      </if>
+      <if test="rewid != null" >
+        rewid = #{rewid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null" >
+        goodsid = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        goodsprice = #{goodsprice,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="goodsamt != null" >
+        goodsamt = #{goodsamt,jdbcType=DECIMAL},
+      </if>
+      <if test="proid != null" >
+        proid = #{proid,jdbcType=INTEGER},
+      </if>
+      <if test="proname != null" >
+        proname = #{proname,jdbcType=VARCHAR},
+      </if>
+      <if test="proprice != null" >
+        proprice = #{proprice,jdbcType=DECIMAL},
+      </if>
+      <if test="rectype != null" >
+        rectype = #{rectype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where recid = #{recid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.record" >
+    update record
+    set odd = #{odd,jdbcType=VARCHAR},
+      rewid = #{rewid,jdbcType=INTEGER},
+      goodsid = #{goodsid,jdbcType=INTEGER},
+      goodsname = #{goodsname,jdbcType=VARCHAR},
+      goodsprice = #{goodsprice,jdbcType=DECIMAL},
+      num = #{num,jdbcType=INTEGER},
+      goodsamt = #{goodsamt,jdbcType=DECIMAL},
+      proid = #{proid,jdbcType=INTEGER},
+      proname = #{proname,jdbcType=VARCHAR},
+      proprice = #{proprice,jdbcType=DECIMAL},
+      rectype = #{rectype,jdbcType=VARCHAR}
+    where recid = #{recid,jdbcType=INTEGER}
+  </update>
+</mapper>
